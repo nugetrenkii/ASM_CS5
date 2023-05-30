@@ -53,8 +53,9 @@ namespace _1.DAL.DomainClass
         public virtual MauSac IdMauSacNavigation { get; set; }
         [ForeignKey(nameof(IdSp))]
         [InverseProperty(nameof(SanPham.ChiTietSps))]
+        public virtual SanPham IdSpNavigation { get; set; }
 
-
+        [InverseProperty(nameof(Anh.IdChiTietSpNavigation))]
         public virtual ICollection<Anh> Anhs { get; set; }
         [InverseProperty(nameof(ChiTietKieuSp.IdChiTietSpNavigation))]
         public virtual ICollection<ChiTietKieuSp> ChiTietKieuSps { get; set; }

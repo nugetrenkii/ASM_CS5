@@ -24,7 +24,6 @@ namespace _1.DAL.Context
         public virtual DbSet<ChiTietSale> ChiTietSales { get; set; }
         public virtual DbSet<ChiTietSp> ChiTietSps { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
-        public virtual DbSet<CttichDiem> CttichDiems { get; set; }
         public virtual DbSet<HinhThucMh> HinhThucMhs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<HoaDonChiTiet> HoaDonChiTiets { get; set; }
@@ -42,7 +41,7 @@ namespace _1.DAL.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer(@"Data Source=NUGETRENKI\SQLEXPRESS;Initial Catalog=ASM_CS5;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"Data Source=NUGETRENKI\SQLEXPRESS;Initial Catalog=ASS_CS5;Integrated Security=True");
             }
         }
 
@@ -81,6 +80,11 @@ namespace _1.DAL.Context
                     .WithMany(p => p.ChiTietKieuSps)
                     .HasForeignKey(d => d.IdChiTietSp)
                     .HasConstraintName("FK__ChiTietKi__IdChi__55F4C372");
+
+                entity.HasOne(d => d.IdKieuSpNavigation)
+                    .WithMany(p => p.ChiTietKieuSps)
+                    .HasForeignKey(d => d.IdKieuSp)
+                    .HasConstraintName("FK__ChiTietKi__IdKie__55009F39");
             });
 
             modelBuilder.Entity<ChiTietSale>(entity =>
@@ -128,7 +132,11 @@ namespace _1.DAL.Context
                     .WithMany(p => p.ChiTietSps)
                     .HasForeignKey(d => d.IdMauSac)
                     .HasConstraintName("FK__ChiTietSP__IdMau__4E53A1AA");
-      
+
+                entity.HasOne(d => d.IdSpNavigation)
+                    .WithMany(p => p.ChiTietSps)
+                    .HasForeignKey(d => d.IdSp)
+                    .HasConstraintName("FK__ChiTietSP__IdSP__4D5F7D71");
             });
 
             modelBuilder.Entity<ChucVu>(entity =>
@@ -136,13 +144,6 @@ namespace _1.DAL.Context
                 entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.Ma).IsUnicode(false);
-
-                entity.Property(e => e.TrangThai).HasDefaultValueSql("((0))");
-            });
-
-            modelBuilder.Entity<CttichDiem>(entity =>
-            {
-                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
                 entity.Property(e => e.TrangThai).HasDefaultValueSql("((0))");
             });
@@ -233,11 +234,20 @@ namespace _1.DAL.Context
                 entity.Property(e => e.Ma).IsUnicode(false);
 
                 entity.Property(e => e.Sdt).IsUnicode(false);
-                entity.Property(e => e.Email).IsUnicode(false);
                 entity.Property(e => e.MatKhau).IsUnicode(false);
+                entity.Property(e => e.Email).IsUnicode(false);
 
                 entity.Property(e => e.TrangThai).HasDefaultValueSql("((0))");
 
+                entity.HasOne(d => d.IdnvNavigation)
+                    .WithMany(p => p.KhachHangs)
+                    .HasForeignKey(d => d.Idnv)
+                    .HasConstraintName("FK__KhachHang__IDNV__58D1301D");
+
+                //entity.HasOne(d => d.IdtichDiemNavigation)
+                //    .WithMany(p => p.KhachHangs)
+                //    .HasForeignKey(d => d.IdtichDiem)
+                //    .HasConstraintName("FK__KhachHang__IDTic__57DD0BE4");
             });
 
             modelBuilder.Entity<KichCo>(entity =>
@@ -261,8 +271,12 @@ namespace _1.DAL.Context
 
                 entity.Property(e => e.TrangThai).HasDefaultValueSql("((0))");
 
+                entity.HasOne(d => d.IdChaNavigation)
+                    .WithMany(p => p.InverseIdChaNavigation)
+                    .HasForeignKey(d => d.IdCha)
+                    .HasConstraintName("FK11");
             });
-          
+
 
             modelBuilder.Entity<MauSac>(entity =>
             {

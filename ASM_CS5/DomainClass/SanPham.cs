@@ -25,6 +25,7 @@ namespace _1.DAL.DomainClass
         public string Ten { get; set; }
         public int? TrangThai { get; set; }
 
+        [InverseProperty(nameof(ChiTietSp.IdSpNavigation))]
         public virtual ICollection<ChiTietSp> ChiTietSps { get; set; }
     }
 }

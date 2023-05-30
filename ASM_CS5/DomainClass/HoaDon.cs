@@ -77,7 +77,7 @@ namespace _1.DAL.DomainClass
         [ForeignKey(nameof(IdPttt))]
         [InverseProperty(nameof(PtthanhToan.HoaDons))]
         public virtual PtthanhToan IdPtttNavigation { get; set; }
+        [InverseProperty(nameof(HoaDonChiTiet.IdHoaDonNavigation))]
         public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
-
     }
 }

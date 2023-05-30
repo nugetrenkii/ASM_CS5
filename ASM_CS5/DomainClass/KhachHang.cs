@@ -19,6 +19,9 @@ namespace _1.DAL.DomainClass
 
         [Key]
         public Guid Id { get; set; }
+        [Column("IDTichDiem")]
+        public Guid? IdtichDiem { get; set; }
+        [StringLength(20)]
         public string Ma { get; set; }
         [StringLength(100)]
         public string Ten { get; set; }
@@ -26,14 +29,17 @@ namespace _1.DAL.DomainClass
         public string Sdt { get; set; }
         [StringLength(500)]
         public string DiaChi { get; set; }
-        public string Email { get; set; }
         public string MatKhau { get; set; }
+        public string Email { get; set; }
         public int? TrangThai { get; set; }
         [Column("IDNV")]
         public Guid? Idnv { get; set; }
 
         [ForeignKey(nameof(Idnv))]
         [InverseProperty(nameof(NhanVien.KhachHangs))]
+        public virtual NhanVien IdnvNavigation { get; set; }
+
+        [InverseProperty(nameof(HoaDon.IdKhNavigation))]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

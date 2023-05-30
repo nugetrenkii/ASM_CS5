@@ -55,7 +55,7 @@ namespace _1.DAL.DomainClass
         public virtual ChucVu IdCvNavigation { get; set; }
         [InverseProperty(nameof(HoaDon.IdNvNavigation))]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
-
+        [InverseProperty(nameof(KhachHang.IdnvNavigation))]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
     }
 }
