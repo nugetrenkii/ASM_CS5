@@ -25,7 +25,6 @@ namespace _1.DAL.DomainClass
         public Guid? IdSp { get; set; }
         public Guid? IdMauSac { get; set; }
         public Guid? IdKichCo { get; set; }
-        public Guid? IdTeam { get; set; }
         public Guid? IdChatLieu { get; set; }
         [Column("MaQR")]
         [StringLength(20)]
@@ -64,13 +63,12 @@ namespace _1.DAL.DomainClass
         [InverseProperty(nameof(HoaDonChiTiet.IdChiTietSpNavigation))]
         public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
 
-        public ChiTietSp(Guid id, Guid? idSp, Guid? idMauSac, Guid? idKichCo, Guid? idTeam, Guid? idChatLieu, string maQr, string baoHanh, string moTa, int? soLuongTon, decimal? giaNhap, decimal? giaBan, int? trangThaiKhuyenMai, int? trangThai)
+        public ChiTietSp(Guid id, Guid? idSp, Guid? idMauSac, Guid? idKichCo, Guid? idChatLieu, string maQr, string baoHanh, string moTa, int? soLuongTon, decimal? giaNhap, decimal? giaBan, int? trangThaiKhuyenMai, int? trangThai)
         {
             Id = id;
             IdSp = idSp;
             IdMauSac = idMauSac;
             IdKichCo = idKichCo;
-            IdTeam = idTeam;
             IdChatLieu = idChatLieu;
             MaQr = maQr;
             BaoHanh = baoHanh;
