@@ -26,7 +26,7 @@ namespace API.Controllers
         }
 
         // GET: api/KhachHang
-        [HttpGet]
+        [HttpGet("GetKH")]
         public async Task<ActionResult<IEnumerable<KhachHang>>> GetKhachHangs()
         {
           if (_context.KhachHangs == null)
