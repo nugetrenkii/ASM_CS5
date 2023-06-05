@@ -20,9 +20,4 @@
     <ProjectReference Include="..\ASM_CS5\ASM_CS5.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModel\ChiTietKieuSp\" />
-    <Folder Include="ViewModel\ChiTietSale\" />
-  </ItemGroup>
-
 </Project>
