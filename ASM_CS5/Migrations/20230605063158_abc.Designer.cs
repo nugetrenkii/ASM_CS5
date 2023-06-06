@@ -12,8 +12,8 @@ using _1.DAL.Context;
 namespace ASM_CS5.Migrations
 {
     [DbContext(typeof(FpolyDBContext))]
-    [Migration("20230530153747_zaa")]
-    partial class zaa
+    [Migration("20230605063158_abc")]
+    partial class abc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -178,9 +178,6 @@ namespace ASM_CS5.Migrations
                     b.Property<Guid?>("IdSp")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("IdSP");
-
-                    b.Property<Guid?>("IdTeam")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MaQr")
                         .HasMaxLength(20)
@@ -454,6 +451,10 @@ namespace ASM_CS5.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("Email")
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(max)");
+
                     b.Property<Guid?>("Idnv")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("IDNV");
@@ -466,6 +467,10 @@ namespace ASM_CS5.Migrations
                         .HasMaxLength(20)
                         .IsUnicode(false)
                         .HasColumnType("varchar(20)");
+
+                    b.Property<string>("MatKhau")
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(max)");
 
                     b.Property<string>("Sdt")
                         .HasMaxLength(10)

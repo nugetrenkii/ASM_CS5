@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ASM_CS5.Migrations
 {
-    public partial class zaa : Migration
+    public partial class abc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -185,7 +185,6 @@ namespace ASM_CS5.Migrations
                     IdSP = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdMauSac = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdKichCo = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    IdTeam = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdChatLieu = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     MaQR = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: true),
                     BaoHanh = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -231,6 +230,8 @@ namespace ASM_CS5.Migrations
                     Ten = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Sdt = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: true),
                     DiaChi = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    MatKhau = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true),
+                    Email = table.Column<string>(type: "varchar(max)", unicode: false, nullable: true),
                     TrangThai = table.Column<int>(type: "int", nullable: true, defaultValueSql: "((0))"),
                     IDNV = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },

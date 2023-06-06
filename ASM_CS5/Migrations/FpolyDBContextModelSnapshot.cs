@@ -177,9 +177,6 @@ namespace ASM_CS5.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("IdSP");
 
-                    b.Property<Guid?>("IdTeam")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("MaQr")
                         .HasMaxLength(20)
                         .IsUnicode(false)
